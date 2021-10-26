@@ -44,7 +44,7 @@ class AuthController extends Controller
         $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
-        $tierData = Tier::find($user->tier_id);
+        $tierData = Tier::find(1);
 
         $data = [
             'access_token' => $token,
@@ -82,7 +82,7 @@ class AuthController extends Controller
         $data = [
             'access_token' => $token,
             'user' => $user,
-            'request_limit'=> $tierData->request_limit
+            'request_limit'=> $tierData
         ];
 
         return $this->apiResponse($data, 'User logged successfully');
