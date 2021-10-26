@@ -9,6 +9,6 @@ class Requests extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'number_of_requests',
+
     ];
 }

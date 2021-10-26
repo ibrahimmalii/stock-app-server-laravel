@@ -3,12 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Client\Response;
-use App\Models\Test;
 use App\Http\Controllers\KeyStatisticsController;
 use App\Http\Controllers\StockPropertieController;
 use App\Http\Controllers\SymbolController;
+use App\Models\Requests;
+use App\Models\Tier;
 use Illuminate\Support\Facades\Http;
 
 
@@ -74,3 +73,21 @@ Route::post('/symbols', [SymbolController::class, 'create']);
 Route::get('/num-of-requests', [RequestsController::class, 'index']);
 Route::post('/num-of-requests', [RequestsController::class, 'create']);
 Route::post('/num-of-requests/{id}', [RequestsController::class, 'update']);
+
+
+// Crud for server
+Route::get('/tier', function (){
+    $newTier = Tier::create([
+        'title' => 'first',
+    ]);
+
+    return $newTier;
+});
+
+Route::get('/requests', function (){
+    $newRequest = Requests::create([
+        'limit_of_requests' => 1000
+    ]);
+
+    return $newRequest;
+});
