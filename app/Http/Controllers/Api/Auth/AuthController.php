@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
@@ -43,10 +44,12 @@ class AuthController extends Controller
         $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        $tierData = Tier::find($user->tier_id);
 
         $data = [
             'access_token' => $token,
             'user' => $user,
+            'request_limit'=> $tierData->request_limit
         ];
 
 
@@ -75,9 +78,11 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        $tierData = Tier::find($user->tier_id);
         $data = [
             'access_token' => $token,
             'user' => $user,
+            'request_limit'=> $tierData->request_limit
         ];
 
         return $this->apiResponse($data, 'User logged successfully');
