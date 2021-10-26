@@ -77,6 +77,7 @@ Route::post('/num-of-requests/{id}', [RequestsController::class, 'update']);
 
 // Crud for server
 Route::get('/tier', function (){
+    dd('ok');
     $newTier = Tier::create([
         'title' => 'first',
     ]);
