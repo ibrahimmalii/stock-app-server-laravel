@@ -79,6 +79,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
         $tierData = Tier::get($user->tier_id);
+        dd($tierData);
         $data = [
             'access_token' => $token,
             'user' => $user,
