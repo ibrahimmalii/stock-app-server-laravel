@@ -9,7 +9,6 @@ class SymbolController extends Controller
 {
     public function index(){
         $symbols = Symbol::get();
-        dd($symbols);
         return $symbols[0];
     }
 
