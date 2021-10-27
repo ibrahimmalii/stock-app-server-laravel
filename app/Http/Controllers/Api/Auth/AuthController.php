@@ -44,11 +44,13 @@ class AuthController extends Controller
         $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        $userInfo = User::find($user->email);
         $tierData = Tier::find($user->tier_id);
+
 
         $data = [
             'access_token' => $token,
-            'user' => $user,
+            'user' => $userInfo,
             'request_limit'=> $tierData->request_limit
         ];
 
