@@ -38,19 +38,19 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->monthly_number_of_requests = 0;
         $user->tier_id = 1;
 
 
         $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
-        $userInfo = User::find($user->email);
         $tierData = Tier::find($user->tier_id);
 
 
         $data = [
             'access_token' => $token,
-            'user' => $userInfo,
+            'user' => $user,
             'request_limit'=> $tierData->request_limit
         ];
 
