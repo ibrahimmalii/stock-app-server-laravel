@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\KeyStatisticsController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StockPropertieController;
 use App\Http\Controllers\SymbolController;
 use App\Models\Requests;
