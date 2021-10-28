@@ -75,20 +75,5 @@ Route::post('/num-of-requests', [RequestsController::class, 'create']);
 Route::post('/num-of-requests/{id}', [RequestsController::class, 'update']);
 
 
-// Crud for server
-Route::get('/tier', function (){
-    dd('ok');
-    $newTier = Tier::create([
-        'title' => 'first',
-    ]);
-
-    return $newTier;
-});
-
-Route::get('/requests', function (){
-    $newRequest = Requests::create([
-        'limit_of_requests' => 1000
-    ]);
-
-    return $newRequest;
-});
+// Search
+Route::get('/search/{key}', [SearchController::class, 'search']);
